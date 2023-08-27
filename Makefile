@@ -1,3 +1,6 @@
+# make ctf <- drop in already built container
+# make ctf new <- create new image and drop in container
+
 .PHONY: ctf
 
 ctf:
