@@ -1,0 +1,62 @@
+icons = "nerdfonts"
+theme = "tokyonight_storm"
+
+[editor]
+bufferline = "always"
+color-modes = true
+completion-replace = true
+cursor-word = true
+cursorline = true
+gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
+idle-timeout = 1
+line-number = "relative"
+popup-border = "all"
+rainbow-brackets = true
+rulers = [100]
+scrolloff = 5
+true-color = true
+
+[editor.indent-guides]
+rainbow-option = "normal"
+render = true
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+center = ["file-name"]
+left = ["mode", "selections", "file-type-icon", "file-type", "register", "spinner", "diagnostics"]
+mode-separator = ""
+right = ["file-encoding", "file-line-ending", "position-percentage", "spacer", "separator", "total-line-numbers"]
+separator = "of"
+
+[editor.statusline.mode]
+insert = "INSERT"
+normal = "NORMAL"
+select = "SELECT"
+
+[editor.sticky-context]
+enable = true
+indicator = false
+
+[editor.whitespace]
+render = "all"
+
+[editor.whitespace.characters]
+nbsp = "⍽"
+newline = "⤶"
+space = "·"
+tab = "→"
+
+[keys.normal]
+C-d = ["half_page_down", "align_view_center"]
+C-q = ":bc"
+C-u = ["half_page_up", "align_view_center"]
+X = "extend_line_above"
+
+[keys.normal."\\"]
+t = [":vs ~/todo.md"]
