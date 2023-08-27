@@ -78,7 +78,7 @@ RUN /home/pwn/.cargo/bin/hx --grammar fetch && /home/pwn/.cargo/bin/hx --grammar
 COPY ./helix/config.toml /home/pwn/.config/helix/
 
 WORKDIR /chall
-RUN chown -R pwn /chall
+RUN sudo chown -R pwn /chall
 
 CMD bash
 
