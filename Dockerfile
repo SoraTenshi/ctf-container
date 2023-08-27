@@ -7,6 +7,11 @@ RUN apt install -y \
   build-essential \
   cargo \
   checksec \
+  clang-format \
+  clang-tidy \
+  clang-tools \
+  clang \
+  clangd \
   elfutils \
   file \
   gdb \
@@ -57,6 +62,7 @@ RUN pip install pwntools
 RUN pip install z3-solver
 RUN pip install requests
 RUN pip install pycryptodome
+RUN pip install python-lsp-server
 
 # Helix stuff <3
 WORKDIR /opt
