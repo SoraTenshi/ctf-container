@@ -1,4 +1,3 @@
-icons = "nerdfonts"
 theme = "tokyonight_storm"
 
 [editor]
@@ -29,8 +28,7 @@ enable = true
 
 [editor.statusline]
 center = ["file-name"]
-left = ["mode", "selections", "file-type-icon", "file-type", "register", "spinner", "diagnostics"]
-mode-separator = ""
+left = ["mode", "selections", "file-type", "register", "spinner", "diagnostics"]
 right = ["file-encoding", "file-line-ending", "position-percentage", "spacer", "separator", "total-line-numbers"]
 separator = "of"
 
