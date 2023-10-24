@@ -2,16 +2,16 @@ FROM --platform=linux/amd64 ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 # Set the bash outline
-RUN apt update
+RUN apt update --fix-missing
 RUN apt install -y \
   build-essential \
-  cargo \
   checksec \
   clang-format \
   clang-tidy \
   clang-tools \
   clang \
   clangd \
+  curl \
   elfutils \
   file \
   gdb \
@@ -47,6 +47,9 @@ USER pwn
 
 ENV LC_ALL=C.UTF-8
 
+RUN curl -sSf https://sh.rustup.rs | bash -s -- -y
+ENV PATH="/home/pwn/.cargo/bin:${PATH}"
+
 RUN echo 'export PS1="\e[0;35m[\e[0;31mctf\e[0;35m]@\w\n\e[0m~ "' >> /home/pwn/.bashrc
 RUN echo 'PATH=$PATH:/home/pwn/.cargo/bin:/home/pwn/.local/bin' >> /home/pwn/.bashrc
 
@@ -71,11 +74,12 @@ RUN git clone https://github.com/SoraTenshi/helix/
 WORKDIR /opt/helix
 RUN git switch new-daily-driver
 RUN git fetch && git pull
-RUN cargo install --locked --path helix-term
+RUN HELIX_DISABLE_AUTO_GRAMMAR_BUILD='1' cargo install --locked --path helix-term
 RUN mkdir /home/pwn/.config/helix -p
 RUN ln -Ts /opt/helix/runtime /home/pwn/.config/helix/runtime
-RUN /home/pwn/.cargo/bin/hx --grammar fetch && /home/pwn/.cargo/bin/hx --grammar build
 COPY ./helix/config.toml /home/pwn/.config/helix/
+# For now, let's just build the grammar manually
+# RUN hx --grammar fetch && hx --grammar build
 
 WORKDIR /chall
 RUN sudo chown -R pwn /chall
